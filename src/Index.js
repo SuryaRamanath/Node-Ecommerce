@@ -10,6 +10,7 @@ const AddProductRouter = require('./Router/Owner/AddProducts')
 const OrderRouter = require('./Router/Customer/Order')
 const ViweProductRouter = require('./Router/Customer/ViewProducts')
 const ViewOrders = require('./Router/Customer/ViewOrder')
+const GetOrders = require('./Router/Owner/GetOrders')
 
 const app = express();
 app.use(express.json());
@@ -21,7 +22,7 @@ app.use(AddProductRouter)
 app.use(OrderRouter)
 app.use(ViweProductRouter)
 app.use(ViewOrders)
-
+app.use(GetOrders)
 const port = process.env.PORT || 7000;
 
 app.listen(port, "0.0.0.0", () => {

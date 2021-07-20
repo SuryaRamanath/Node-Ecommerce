@@ -8,16 +8,14 @@ router.get('/api/get-all/orders', async(req,res) => {
     
     const {id} = req.body
     try{
-      const orders = await Customer.find({ _id:id})
-      console.log("pass")
-      const array = orders.Orders
-      console.log("pass")
-      return res.json({ status: 'ok', order: orders._id})
+      const orders = await Customer.find({ _id:id}).lean()
+      let array = orders[0].Orders 
+      return res.json({ status: 'ok', orders: orders[0].Orders})
     }
     catch(e){
       return res.json({ status: 'error'})
     }
-      
+    
   
 }) 
 
